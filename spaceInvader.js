@@ -8,7 +8,7 @@ function SignatureRaiko(){
     canvas.height = window.innerHeight;
     let context = canvas.getContext("2d"); 
 
-    context.fillStyle='#f0f0f0';
+    context.fillStyle='black';
     context.beginPath();
     context.rect(50,50,300,300);
     context.closePath();
