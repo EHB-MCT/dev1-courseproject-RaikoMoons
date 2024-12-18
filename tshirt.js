@@ -4,15 +4,23 @@ import * as Utils from "./scripts/utils.js";
 
 let width = context.canvas.width;
 let lineWidth = 4;
-let circleswidth = 8;
+let circlesWidth = 8;
+let frame = 0;
 
-drawTshirtDesign();
-blackCircles();
-getRandomHue();
+animate();
+
+function animate() {
+	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+	drawTshirtDesign();
+	blackCircles();
+	frame++;
+	requestAnimationFrame(animate);
+}
 
 function getRandomHue() {
 	return Utils.randomNumber(120, 360);
 }
+
 function drawTshirtDesign() {
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 40);
@@ -50,19 +58,19 @@ function drawTshirtDesign() {
 }
 
 function blackCircles() {
-	context.lineWidth = circleswidth;
+	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
 	Utils.strokeCircle(width / 2, 450, 75, 100);
 
-	context.lineWidth = circleswidth;
+	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
 	Utils.strokeCircle(width / 2, 250, 40, 100);
 
-	context.lineWidth = circleswidth;
+	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
 	Utils.strokeCircle(width / 1.75, 600, 80, 100);
 
-	context.lineWidth = circleswidth;
+	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
 	Utils.strokeCircle(width / 1.75, 165, 30, 100);
 }
