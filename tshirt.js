@@ -10,6 +10,14 @@ let width = context.canvas.width;
 let lineWidth = 4;
 let circlesWidth = 8;
 let frame = 0;
+let mouseX = width / 2;
+let mouseY = context.canvas.height / 2;
+
+context.canvas.addEventListener("mousemove", (event) => {
+	const rect = context.canvas.getBoundingClientRect();
+	mouseX = event.clientX - rect.left;
+	mouseY = event.clientY - rect.top;
+});
 
 animate();
 
@@ -28,36 +36,36 @@ function getRandomHue() {
 function drawTshirtDesign() {
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 40);
-	Utils.strokeCircle(width / 2, 350, 100, 100);
+	Utils.strokeCircle(mouseX, mouseY, 100, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 50);
-	Utils.strokeCircle(width / 2, 350, 120, 100);
+	Utils.strokeCircle(mouseX, mouseY, 120, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 40);
-	Utils.strokeCircle(width / 2, 350, 70, 100);
+	Utils.strokeCircle(mouseX, mouseY, 70, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 60);
-	Utils.strokeCircle(width / 2 + 100, 140, 40, 100);
+	Utils.strokeCircle(mouseX + 100, mouseY - 200, 40, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 20);
-	Utils.strokeCircle(width / 2 - 100, 180, 20, 100);
+	Utils.strokeCircle(mouseX - 100, mouseY - 170, 20, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 20);
-	Utils.strokeCircle(width / 2 + 100, 555, 40, 100);
+	Utils.strokeCircle(mouseX + 100, mouseY + 205, 40, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 40);
-	Utils.strokeCircle(width / 2 - 100, 500, 30, 100);
+	Utils.strokeCircle(mouseX - 100, mouseY + 150, 30, 100);
 
 	context.lineWidth = lineWidth;
 	context.strokeStyle = Utils.hsl(getRandomHue(), 180, 40);
 	for (let i = 1; i < 4; i++) {
-		Utils.strokeCircle(width / 2, 630, 30 + i * 10);
+		Utils.strokeCircle(mouseX, mouseY + 280, 30 + i * 10);
 	}
 }
 
@@ -66,17 +74,17 @@ function blackCircles() {
 
 	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
-	Utils.strokeCircle(width / 2, 450, 75 + groteVeranderen, 100);
+	Utils.strokeCircle(mouseX, mouseY + 100, 75 + groteVeranderen, 100);
 
 	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
-	Utils.strokeCircle(width / 2, 250, 40 + groteVeranderen, 100);
+	Utils.strokeCircle(mouseX, mouseY - 100, 40 + groteVeranderen, 100);
 
 	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
-	Utils.strokeCircle(width / 1.75, 600, 80 + groteVeranderen, 100);
+	Utils.strokeCircle(mouseX + 150, mouseY + 250, 80 + groteVeranderen, 100);
 
 	context.lineWidth = circlesWidth;
 	context.strokeStyle = "black";
-	Utils.strokeCircle(width / 1.75, 165, 30 + groteVeranderen, 100);
+	Utils.strokeCircle(mouseX + 150, mouseY - 185, 30 + groteVeranderen, 100);
 }
